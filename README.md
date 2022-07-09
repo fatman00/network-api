@@ -15,16 +15,18 @@ The tool uses the following technology stack to provide a simple and intuitive i
 
 The application architecture can be illustrated in the below diagram.
 
-The application is divided into two parts
+The application is divided into two parts:
 
 - **Frontend** - The frontend is a FastAPI application that provides a REST API interface for interacting with the network.
 - **Backend** - The backend is a Python script that uses NAPALM to interact with the network.
 
 # Folder Structure and Files
 
-The below screenshot illustrates the folder structure and files in the application.
+The below screenshot show the folder structure and files in the application.
 
-The files are as follows
+![alt text](images/folder_structure.png)
+
+The files are as follows:
 
 - **main.py** - The main file that contains the FastAPI application.
 - **std_errors.py** - A file that contains the standard error messages that are used by the application.
@@ -57,7 +59,7 @@ The application can be started by executing the following command in the virtual
 environment created during the installation process.
 
 ```
-uvicorn app.main:app --port 8004 --reload
+uvicorn app.main:app --reload
 ```
 
 # Interacting with the Application
@@ -65,6 +67,24 @@ uvicorn app.main:app --port 8004 --reload
 You can interact with the application using your choice of a web-browser or an API platform like Postman or simple curl commands.
 
 For the sake of representation, below are screenshots of the GET /facts and GET /interfaces endpoints using Postman.
+
+### device_facts
+
+![alt text](images/postman_device_facts.png)
+
+### device_interfaces
+
+![alt text](images/postman_device_interfaces.png)
+
+# API Documentation
+
+FastAPI automatically generates interactive API documentation. The generated documentation follows the [Swagger 2.0](https://swagger.io/specification/) specification.
+
+The API documentation can be viewed by accessing the following URL in your web browser.
+
+```
+http://localhost:8000/docs
+```
 
 # Improvements
 
