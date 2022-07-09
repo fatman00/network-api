@@ -31,4 +31,4 @@ def get_running_config(hostname: str):
         raise HTTPException(status_code=404, detail=CLIENT_NOT_REACHABLE_404) from e
 
     else:
-        return json.dumps(device.get_facts())
+        return device.get_facts()

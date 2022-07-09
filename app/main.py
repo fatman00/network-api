@@ -12,7 +12,7 @@ app = FastAPI(
     }
 )
 
-@router.get("/")
+@app.get("/")
 def home():
     return {"message": "Welcome to the network-api"}
 
