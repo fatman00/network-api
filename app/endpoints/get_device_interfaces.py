@@ -5,7 +5,7 @@ router = APIRouter()
 
 # Define a API endpoint for getting device facts.
 @router.get(
-    "/get_device_interfaces/{hostname}",
+    "/{hostname}/interfaces",
     summary="Retrieve device interfaces",
     )
 def get_running_config(hostname: str):
