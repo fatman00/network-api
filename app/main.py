@@ -12,6 +12,10 @@ app = FastAPI(
     }
 )
 
+@router.get("/")
+def home():
+    return {"message": "Welcome to the network-api"}
+
 # API end point to get the device facts
 app.include_router(
     get_device_facts.router

@@ -27,11 +27,50 @@ The below screenshot illustrates the folder structure and files in the applicati
 The files are as follows
 
 - **main.py** - The main file that contains the FastAPI application.
-- **std_errors.py** - A file that contains the standard error messages that are usedby the application.
-- **device_inventory.yaml** - A file that contains the details of the devices thatare part of the network and how to connect to them.
+- **std_errors.py** - A file that contains the standard error messages that are used by the application.
+- **device_inventory.yaml** - A file that contains the details of the devices that are part of the network and how to connect to them.
 - **endpoints/get_device_facts.py** - A file that contains the code for the GET {hostname}/facts endpoint. It also contains the
   NAPALM code to fetch the device facts.
-- **endpoints/get_device_interfaces.py** - A file that contains the code for theGET /{hostname}/interfaces endpoint. It also contains the
+- **endpoints/get_device_interfaces.py** - A file that contains the code for the GET /{hostname}/interfaces endpoint. It also contains the
   NAPALM code to fetch the device interfaces.
 
+# Installation
 
+The application can be installed using the following two methods.
+
+If using poetry,
+
+```
+poetry install
+```
+
+If using venv and pip,
+
+```
+python -m venv .venv
+pip install -r requirements.txt
+```
+
+# Starting the Application
+
+The application can be started by executing the following command in the virtual
+environment created during the installation process.
+
+```
+uvicorn app.main:app --port 8004 --reload
+```
+
+# Interacting with the Application
+
+You can interact with the application using your choice of a web-browser or an API platform like Postman or simple curl commands.
+
+For the sake of representation, below are screenshots of the GET /facts and GET /interfaces endpoints using Postman.
+
+# Improvements
+
+The application is currently not optimized and it is a work in progress.
+Some of the improvements to consider are:
+
+- Authentication: Implement an authentication mechanism to restrict access to the application.
+- Error handling: Implement better error handling for the application.
+- Inventory Management: Implement a better way to manage the inventory of network devices such as Nornir or extract from a SOT such as NetBox/Nautobot.
