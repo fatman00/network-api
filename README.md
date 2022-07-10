@@ -1,12 +1,12 @@
 # Introduction
 
 network-api is a tool that can be used to interact with your network using REST API calls.
-It can be used to expose your network to developers who are more comfortable with the REST API
+It can be used to expose your network to developers who are more familiar with the REST API
 without having to understand the underlying protocol and complexities of interacting with the network programmatically.
 
 # Technology Stack
 
-The tool uses the following technology stack to provide a simple and intuitive interface for interacting with the network.
+The tool uses the following technology stack to provide a simple API interface to interact with the network.
 
 - **FastAPI** as a web framework for building APIs.
 - **NAPALM** to interact with the actual network devices.
@@ -15,10 +15,16 @@ The tool uses the following technology stack to provide a simple and intuitive i
 
 The application architecture can be illustrated in the below diagram.
 
-The application is divided into two parts:
+![alt text](images/architecture.png)
 
-- **Frontend** - The frontend is a FastAPI application that provides a REST API interface for interacting with the network.
-- **Backend** - The backend is a Python script that uses NAPALM to interact with the network.
+The application flow can be characterised as below:
+
+1. The clients interact with the network-api tool using HTTP GET requests. The HTTP GET request is served by the FastAPI application.
+2. The FastAPI application invoked the appropriate NAPALM method to interact with the network devices.
+3. The NAPALM function gets the details of the network device like IP address, username and password from the local inventory file.
+4. The NAPALM function uses ssh as the transport protocol to connect to the network device and execute its getter.
+5. The NAPALM function returns the output of the getter to the FastAPI application.
+6. The FastAPI application returns the output to the client.
 
 # Folder Structure and Files
 
@@ -29,11 +35,11 @@ The below screenshot show the folder structure and files in the application.
 The files are as follows:
 
 - **main.py** - The main file that contains the FastAPI application.
-- **std_errors.py** - A file that contains the standard error messages that are used by the application.
-- **device_inventory.yaml** - A file that contains the details of the devices that are part of the network and how to connect to them.
-- **endpoints/get_device_facts.py** - A file that contains the code for the GET {hostname}/facts endpoint. It also contains the
+- **std_errors.py** - This file that contains the standard error messages that are used by the application.
+- **device_inventory.yaml** - This file contains the details of the devices that are part of the network and how to connect to them.
+- **endpoints/get_device_facts.py** - This file contains the code for the GET {hostname}/facts endpoint. It also contains the
   NAPALM code to fetch the device facts.
-- **endpoints/get_device_interfaces.py** - A file that contains the code for the GET /{hostname}/interfaces endpoint. It also contains the
+- **endpoints/get_device_interfaces.py** - This file contains the code for the GET /{hostname}/interfaces endpoint. It also contains the
   NAPALM code to fetch the device interfaces.
 
 # Installation
