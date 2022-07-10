@@ -92,6 +92,10 @@ The API documentation can be viewed by accessing the following URL in your web b
 http://localhost:8000/docs
 ```
 
+A screenshot of the API documentation is shown below:
+
+![alt text](images/api_documentation.png)
+
 # Improvements
 
 The application is currently not optimized and it is a work in progress.
