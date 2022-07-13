@@ -59,6 +59,12 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+If using docker,
+
+```
+docker-compose up
+```
+
 # Starting the Application
 
 The application can be started by executing the following command in the virtual
