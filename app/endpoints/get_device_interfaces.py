@@ -16,7 +16,6 @@ router = APIRouter()
 )
 def get_running_config(hostname: str):
 
-
     # Read local Inventory file
     with open("app/device_inventory.yaml", "r") as f:
         device_inventory = yaml.safe_load(f)
