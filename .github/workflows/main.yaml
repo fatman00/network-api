@@ -1,6 +1,6 @@
 ---
 # Github actions workflow file
-name: "pyproject-cookiecutter"
+name: "network-api"
 
 on:
   push:
