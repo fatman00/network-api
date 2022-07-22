@@ -1,6 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from ..std_errors import CLIENT_NOT_REACHABLE_404, UNAUTHORIZED_401
 
+from napalm import get_network_driver
+from netmiko import NetmikoAuthenticationException
+from napalm.base.exceptions import ConnectionException
+import yaml
+
 # Instantiate an instance of APIRouter
 router = APIRouter()
 
@@ -10,11 +15,7 @@ router = APIRouter()
     summary="Retrieve device interfaces",
 )
 def get_running_config(hostname: str):
-    from napalm import get_network_driver
-    from netmiko import NetmikoAuthenticationException
-    from napalm.base.exceptions import ConnectionException
-    import json
-    import yaml
+
 
     # Read local Inventory file
     with open("app/device_inventory.yaml", "r") as f:
@@ -31,7 +32,7 @@ def get_running_config(hostname: str):
 
     # Attempt to connect to device and handle any exceptions.
     try:
-        ssh_conn = device.open()
+        device.open()
     except NetmikoAuthenticationException as e:
         raise HTTPException(status_code=401, detail=UNAUTHORIZED_401) from e
     except ConnectionException as e:
