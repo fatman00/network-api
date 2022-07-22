@@ -2,7 +2,7 @@
 # Github actions workflow file
 name: "network-api"
 
-on:
+on: # yamllint disable rule:truthy
   push:
     branches:
       - main
