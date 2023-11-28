@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .endpoints import get_device_facts, get_device_interfaces
+from .endpoints import get_device_facts, get_device_interfaces, get_device_interfaces_ip
 
 # Instantiate FastAPI Class
 app = FastAPI(
@@ -23,3 +23,6 @@ app.include_router(get_device_facts.router)
 
 # API end point to get the device interfaces
 app.include_router(get_device_interfaces.router)
+
+# API end point to get the device interfaces ips
+app.include_router(get_device_interfaces_ip.router)
